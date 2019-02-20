@@ -27,7 +27,7 @@ body {
 header {
     grid-area: header;
     margin: 0;
-    background: url("img/christopher-burns-271403-unsplash.jpg");
+    background: url("img/christopher-burns-271403-unsplash_compressed.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size:cover;

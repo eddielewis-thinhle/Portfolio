@@ -1,0 +1,134 @@
+html,
+body {
+    font-family: 'Fira Code';
+    font-size: 16px;
+    margin: 0;
+}
+
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "navbar navbar navbar"
+        "main main aside-r"
+        "footer footer footer";
+    grid-template-columns: 1fr 1fr 40vw;
+    grid-template-rows: 100vh 5vh 95vh auto;
+}
+
+
+
+.item {
+    background: #ffe600b2;
+    border: 3px solid #3d3910b2;
+}
+
+header {
+    grid-area: header;
+    margin: 0;
+    background: url("img/AutumnNeuschwanstein_EN-US10604288553_1920x1200.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: cover; 
+}
+
+.color-overlay {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .7;
+}
+
+.intro {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.intro h1 {
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+header .intro p {
+    padding: 0 14vh 50vh 14vh;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2.5rem;    
+    
+} 
+header .intro p strong {
+    color: orange;
+
+}
+header div.caption {
+    color: whitesmoke;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+header .caption a {
+    color: orange;
+    text-decoration: none;
+}
+
+
+
+nav {
+    grid-area: navbar;
+    background: grey;
+    margin: 0;
+}
+
+main {
+    grid-area: main;
+    position: relative;
+}
+
+main,
+aside {
+    padding: 1.5rem;
+}
+
+aside {
+    grid-area: aside-r;
+}
+
+footer {
+    grid-area: footer;
+    margin: 0;
+}
+
+@media (max-width: 740px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "navbar"
+            "main"
+            "aside-r"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows:
+            70vh
+            /* Header */
+            100px
+            /* Nav */
+            20vh
+            /* Content */
+            auto
+            /* Sidebar */
+            auto;
+            /*Footer */
+    }
+
+
+
+
+    nav,
+    aside {
+        margin: 0;
+    }
+}

@@ -13,8 +13,10 @@ body {
         "navbar navbar navbar"
         "main main aside-r"
         "footer footer footer";
-    grid-template-columns: 1fr 1fr 40vw;
-    grid-template-rows: 100vh 10vh 95vh auto;
+    grid-template-columns: 1fr 1fr 18vw;
+    grid-template-rows: 100vh
+        /*Full-page home (like landing page)*/
+        50px auto auto;
 }
 
 .item {
@@ -34,7 +36,7 @@ header {
         "intro intro intro"
         "caption caption caption";
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(auto,95vh) 5vh;
+    grid-template-rows: auto 5vh;
 }
 
 .intro {
@@ -46,6 +48,7 @@ header {
 .intro h1 {
     text-transform: uppercase;
     font-size: 5rem;
+    margin-top: 35vh;
 }
 
 header .intro p {
@@ -55,12 +58,8 @@ header .intro p {
 }
 
 .intro p span {
-    background: -webkit-linear-gradient(#6de7f0, #8533f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
+    background: -webkit-linear-gradient(#10dddd, #7117e7);
     font-family: 'arial';
-
 }
 
 .caption {
@@ -71,101 +70,248 @@ header .intro p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.intro p span,
 .caption a {
-    background: -webkit-linear-gradient(#6de7f0, #8533f0);
+    background: -webkit-linear-gradient(#10dddd, #7117e7);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 600;
     text-decoration: none;
+
 }
 
+/* .caption a {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ */
 .intro,
 .caption {
     background: #000;
-    opacity: .7;
+    opacity: .8;
 }
 
+/*-------------Fade-in Brg--------------*/
+.animated-bgr {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn-bgr {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn-bgr {
+    -webkit-animation-name: fadeIn-brg;
+    animation-name: fadeIn-brg;
+}
+
+/*-------------Fade-in Brg--------------*/
+
+/*-------------Intro text fade-in--------------*/
+.animated {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.delayed {
+    animation-delay: .8s;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+/*-------------Intro text fade-in--------------*/
+
+/*-------------Navbar--------------*/
 nav {
     grid-area: navbar;
-    background: grey;
-    margin: 0;
+    background: #1c2331;
+
 }
-
-main {
-    grid-area: main;
-    position: relative;
+.navbar {
+    overflow: hidden;
 }
-
-main,
-aside {
-    padding: 1.5rem;
+#toggle,
+.fa,
+.fa-bars {
+    visibility: hidden;
+    z-index: -10;
 }
-
-aside {
-    grid-area: aside-r;
+.navbar ul {
+    margin: 1px;
+    text-align: center;
+    padding-right: 15vw;
 }
-
-footer {
-    grid-area: footer;
-    margin: 0;
+.navbar a {
+    text-decoration: none;
+    text-transform: uppercase;
 }
-@keyframes fadeIn { from { opacity:0.3; } to { opacity:1; } }
-
-.fade-in {
-  opacity:.7;  /* make things invisible upon start */
-  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:.8s;
-  -moz-animation-duration:.8s;
-  animation-duration:.8s;
+.navbar li{
+    padding:16px 8px 14px 8px;
 }
-
-@media (max-width: 768px) {
-    body {
-        display: grid;
-        grid-template-areas:
-            "header"
-            /* "navbar" */
-            "main"
-            "aside-r"
-            "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows:
-            minmax(auto, 100vh)
-            /* Header */
-           /*  minmax(auto, 10vh) */
-            /* Nav */
-            minmax(auto, 100vh)
-            /* Content */
-            auto
-            /* Sidebar */
-            auto;
-        /*Footer */
+.navbar label,
+.navbar ul,
+.navbar li,
+.navbar a {
+    float: right;
+    display: block;
+    color: whitesmoke;
+    transition: all ease-in-out 0.2s;
+} 
+.navbar li:hover {
+    background: #59698d;
+    font-weight: bold;
+}
+/*-------------Mobile Navbar--------------*/
+@media (max-width: 600px) {
+    nav {
+        position: fixed;
+        background: #1c2331;
+        width: 100%;
+        height: 60px;
+        color: whitesmoke;
+        font-size: 1.8rem;
+    }
+    .navbar label,
+    #toggle,
+    .fa,
+    .fa-bars {
+        visibility: visible;
+        z-index: 10;
     }
 
-    header {
-        grid-template-areas:
-            "intro"
-            "img-credit"
-        grid-template-columns: minmax(auto, 1fr);
-        grid-template-rows: minmax(100px, auto);
+    #burger {
+        position: absolute;
+        right: 0;
+        padding: 15px;
+
     }
 
-    nav,
+    input[type=checkbox] {
+        display: none;
+    }
+
+    .navbar ul {
+        display: none;
+    }
+
+    input[type=checkbox]:checked~ul {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar li,
+    .navbar ul{
+        width:100%;
+        text-transform: uppercase;
+        background: #1c2331;
+        text-decoration: none;
+        color: whitesmoke;
+        font-size: 1.2rem;
+    }
+    
+}    
+/*-------------Mobile Navbar--------------*/
+    
+
+/*-------------Navbar--------------*/
+
+
+
+    /* ------------Main----------- */
+    main {
+        grid-area: main;
+        padding: 2rem 2rem 2rem 4rem;
+    }
+
+    /* ------------Main----------- */
+
+
     aside {
+        grid-area: aside-r;
+    }
+
+    footer {
+        grid-area: footer;
         margin: 0;
     }
-    nav {
-        position: absolute;
-        top: 0;
-        width:100%;
-        height:5vh;
-        margin:0 0 10vh 0 ;
-        grid-template-rows: 1fr;
-    }
+
+    @media (max-width: 600px) {
+        body {
+            display: grid;
+            grid-template-areas:
+                "header"
+                /* "navbar" */
+                "main"
+                "aside-r"
+                "footer";
+            grid-template-columns: 1fr;
+            grid-template-rows:
+                minmax(auto, 100vh)
+                /* Header */
+                /* Nav */
+                minmax(auto, 1fr)
+                /* Content */
+                auto
+                /* Sidebar */
+                auto;
+            /*Footer */
+        }
+
+        header {
+            grid-template-columns: minmax(auto, 1fr);
+            grid-template-rows: minmax(100px, auto);
+        }
+
+        header h1 {
+            margin-top: 35vh;
+        }
+
+        .intro,
+        aside,
+        footer {
+            padding: 25px;
+        }
+
+        main {
+            margin: 0;
+            padding: 20px;
+            text-align: justify;
+        }
 }
